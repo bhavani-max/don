@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Ojeswi! &#x1F382;</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="music.mpeg" type="audio/mpeg" />
+  </audio>
+
+  <!-- Floating Music Player -->
+  <div class="music-player" id="music-player">
+    <button class="music-btn" id="music-btn" title="Play / Pause music">
+      <span class="music-icon" id="music-icon">🎵</span>
+      <span class="music-rings">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="ring r3"></span>
+      </span>
+    </button>
+    <span class="music-label" id="music-label">Play Music</span>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Firefly Canvas (always on) -->
+  <canvas id="firefly-canvas"></canvas>
+
+  <!-- Floating balloons -->
+  <div class="balloons">
+    <div class="balloon b1">&#x1F388;</div>
+    <div class="balloon b2">&#x1F380;</div>
+    <div class="balloon b3">&#x1F388;</div>
+    <div class="balloon b4">&#x1F49C;</div>
+    <div class="balloon b5">&#x1F388;</div>
+    <div class="balloon b6">&#x1F338;</div>
+  </div>
+
+  <!-- ✨ Wish Lantern Overlay ✨ -->
+  <div class="lantern-overlay" id="lantern-overlay">
+    <div class="lantern-sky" id="lantern-sky">
+      <!-- stars injected by JS -->
+      <div class="lantern-wrap" id="lantern-wrap">
+        <div class="lantern-body">
+          <div class="lantern-top"></div>
+          <div class="lantern-glow-ring"></div>
+          <div class="lantern-face">
+            <span class="lantern-char">&#x1F338;</span>
+          </div>
+          <div class="lantern-bottom"></div>
+          <div class="lantern-flame-base">
+            <div class="lantern-flame"></div>
+          </div>
+          <div class="lantern-string"></div>
+        </div>
+        <!-- Message scroll that unfurls -->
+        <div class="lantern-scroll" id="lantern-scroll">
+          <div class="scroll-inner">
+            <p class="scroll-line1">For Ojeswi &#x1F338;</p>
+            <p class="scroll-msg">
+              In a world full of ordinary days,<br>
+              you make every single one feel like<br>
+              a little bit of magic.<br><br>
+              Happy Birthday, my favourite person.<br>
+              May every wish you send up tonight<br>
+              find its way back to you — <br>
+              a hundred times over. &#x2728;
+            </p>
+            <p class="scroll-sign">&#x2014; with all my love &#x1F496;</p>
+          </div>
+        </div>
+      </div>
+      <!-- Fireflies around lantern -->
+      <div class="sky-fireflies" id="sky-fireflies"></div>
+    </div>
+    <button class="lantern-close" id="lantern-close">&#x2715; Close</button>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lb-close">&#x2715;</button>
+    <button class="lb-prev"  id="lb-prev">&#8592;</button>
+    <button class="lb-next"  id="lb-next">&#8594;</button>
+    <div class="lb-inner">
+      <img id="lb-img" src="" alt="Photo" />
+      <p class="lb-caption" id="lb-caption"></p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="sparkle-ring">&#x2728;</div>
+      <h1 class="title">
+        <span class="line1">Happy</span>
+        <span class="line2">Birthday</span>
+        <span class="line3">Ojeswi! &#x1F382;</span>
+      </h1>
+      <p class="date-tag">October 4th &#x1F5D3;&#xFE0F;</p>
+    </section>
+
+    <!-- ── Hero Slideshow ── -->
+    <section class="slideshow-section">
+      <div class="slideshow-frame">
+        <div class="slide-glow"></div>
+        <div class="slides" id="slides">
+          <div class="slide active">
+            <img src="pictures/Gemini_Generated_Image_hn2ia3hn2ia3hn2i.png" alt="Ojeswi" />
+            <div class="slide-overlay"><span class="slide-label">Absolutely stunning &#x1F4AB;</span></div>
+          </div>
+          <div class="slide">
+            <img src="pictures/WhatsApp Image 2026-10-02 at 1.56.28 PM.jpeg" alt="Ojeswi" />
+            <div class="slide-overlay"><span class="slide-label">That smile says it all &#x1F90D;</span></div>
+          </div>
+          <div class="slide">
+            <img src="pictures/Gemini_Generated_Image_qmc85sqmc85sqmc8.png" alt="Ojeswi" />
+            <div class="slide-overlay"><span class="slide-label">Elegance personified &#x2B50;</span></div>
+          </div>
+          <div class="slide">
+            <img src="pictures/Gemini_Generated_Image_o76a42o76a42o76a.png" alt="Ojeswi at temple" />
+            <div class="slide-overlay"><span class="slide-label">Blessed &amp; beautiful &#x1F338;</span></div>
+          </div>
+          <div class="slide">
+            <img src="pictures/Gemini_Generated_Image_gxmgqgxmgqgxmgqg.png" alt="Ojeswi" data-pos="center" />
+            <div class="slide-overlay"><span class="slide-label">Rocking every look &#x1F4AB;</span></div>
+          </div>
+          <div class="slide">
+            <img src="pictures/Gemini_Generated_Image_dtrei0dtrei0dtre.png" alt="Ojeswi" data-pos="lower" />
+            <div class="slide-overlay"><span class="slide-label">Living her best life &#x1F499;</span></div>
+          </div>
+        </div>
+        <div class="slide-dots" id="slide-dots">
+          <span class="dot active" data-idx="0"></span>
+          <span class="dot" data-idx="1"></span>
+          <span class="dot" data-idx="2"></span>
+          <span class="dot" data-idx="3"></span>
+          <span class="dot" data-idx="4"></span>
+          <span class="dot" data-idx="5"></span>
+        </div>
+        <button class="slide-prev" id="slide-prev">&#8592;</button>
+        <button class="slide-next" id="slide-next">&#8594;</button>
+      </div>
+      <p class="tagline">To the most amazing person I know &#x1F49C;</p>
+    </section>
+
+    <!-- ── Message Cards ── -->
+    <section class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F496;</div>
+        <h3>You're My Person</h3>
+        <p>Through every laugh, every cry, every random 2 AM conversation — you've always been there. I am so lucky to call you my best friend.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F31F;</div>
+        <h3>You Shine Bright</h3>
+        <p>The way you light up every room you walk into is something truly rare. Never let anyone dim that glow — it's one of my favourite things about you.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F389;</div>
+        <h3>Here's to You</h3>
+        <p>May this year be overflowing with joy, new adventures, big wins, and every single thing your heart desires. You deserve it all and so much more.</p>
+      </div>
+    </section>
+
+    <!-- ── Big Wish ── -->
+    <section class="wish-section">
+      <div class="wish-box">
+        <p class="wish-text">
+          "Wishing you a day as beautiful as your smile, as warm as your heart, and as wonderful as you make every single day feel for the people around you. Happy Birthday Ojeswi! &#x1F382;&#x2728;"
+        </p>
+        <span class="wish-signature">&#x2014; Your Best Friend &#x1F48C;</span>
+      </div>
+    </section>
+
+    <!-- ── Alternating Story Section ── -->
+    <section class="story-section">
+      <h2 class="story-heading">A Year of You &#x1F4F8;</h2>
+      <p class="story-sub">Every frame, a favourite memory</p>
+
+      <!-- Row 1 : image LEFT · quote RIGHT -->
+      <div class="story-row">
+        <div class="story-img-wrap">
+          <img src="pictures/Gemini_Generated_Image_hn2ia3hn2ia3hn2i.png" alt="Ojeswi" data-pos="top" />
+          <div class="story-img-glow"></div>
+        </div>
+        <div class="story-quote">
+          <span class="quote-mark">"</span>
+          <p>There's something about the way you carry yourself — effortlessly graceful, quietly confident. You walk into a room and everything just feels warmer. That's a gift not many people have, but you wear it like it's the most natural thing in the world.</p>
+          <span class="quote-emoji">&#x1F4AB; &#x1F49A;</span>
+        </div>
+      </div>
+
+      <!-- Row 2 : quote LEFT · image RIGHT -->
+      <div class="story-row reverse">
+        <div class="story-img-wrap">
+          <img src="pictures/WhatsApp Image 2026-10-02 at 1.56.28 PM.jpeg" alt="Ojeswi" data-pos="top" />
+          <div class="story-img-glow"></div>
+        </div>
+        <div class="story-quote">
+          <span class="quote-mark">"</span>
+          <p>That smile of yours — it's genuinely one of the most beautiful things I've ever seen. It's not just pretty, it's real. It shows up in your eyes before it even reaches your lips, and it makes everyone around you feel like everything is going to be okay.</p>
+          <span class="quote-emoji">&#x1F90D; &#x1F338;</span>
+        </div>
+      </div>
+
+      <!-- Row 3 : image LEFT · quote RIGHT -->
+      <div class="story-row">
+        <div class="story-img-wrap">
+          <img src="pictures/Gemini_Generated_Image_qmc85sqmc85sqmc8.png" alt="Ojeswi" data-pos="top" />
+          <div class="story-img-glow"></div>
+        </div>
+        <div class="story-quote">
+          <span class="quote-mark">"</span>
+          <p>Elegance isn't about what you wear — it's about how you make people feel. And every single time, you make people feel seen, heard, and cherished. That's a kind of beauty that no outfit could ever match, though yours always comes pretty close.</p>
+          <span class="quote-emoji">&#x2B50; &#x1F5A4;</span>
+        </div>
+      </div>
+
+      <!-- Row 4 : quote LEFT · image RIGHT -->
+      <div class="story-row reverse">
+        <div class="story-img-wrap">
+          <img src="pictures/Gemini_Generated_Image_o76a42o76a42o76a.png" alt="Ojeswi at temple" data-pos="upper" />
+          <div class="story-img-glow"></div>
+        </div>
+        <div class="story-quote">
+          <span class="quote-mark">"</span>
+          <p>You have this beautiful habit of finding peace in the right places and joy in the smallest moments. The way you move through life — with faith, with grace, with a quiet strength — is something I genuinely admire about you every single day.</p>
+          <span class="quote-emoji">&#x1F64F; &#x1F33A;</span>
+        </div>
+      </div>
+
+      <!-- Row 5 : image LEFT · quote RIGHT -->
+      <div class="story-row">
+        <div class="story-img-wrap">
+          <img src="pictures/Gemini_Generated_Image_gxmgqgxmgqgxmgqg.png" alt="Ojeswi" data-pos="center" />
+          <div class="story-img-glow"></div>
+        </div>
+        <div class="story-quote">
+          <span class="quote-mark">"</span>
+          <p>You never half-do anything. Whether it's showing up for the people you love, chasing what you want, or just picking the perfect outfit — you go all in, every time. That energy is contagious and inspiring in the best possible way.</p>
+          <span class="quote-emoji">&#x1F525; &#x1F4AB;</span>
+        </div>
+      </div>
+
+      <!-- Row 6 : quote LEFT · image RIGHT -->
+      <div class="story-row reverse">
+        <div class="story-img-wrap">
+          <img src="pictures/Gemini_Generated_Image_dtrei0dtrei0dtre.png" alt="Ojeswi" data-pos="lower" />
+          <div class="story-img-glow"></div>
+        </div>
+        <div class="story-quote">
+          <span class="quote-mark">"</span>
+          <p>Life is always more fun with you around. You bring this infectious energy — spontaneous, joyful, a little bit chaotic in the best way. Here's to more adventures, more laughter, and more moments that remind us how lucky we are to have each other.</p>
+          <span class="quote-emoji">&#x1F499; &#x1F389;</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ✨ Wish Lantern Trigger ✨ -->
+    <section class="lantern-trigger-section">
+      <div class="lantern-trigger-wrap">
+        <div class="lantern-trigger-glow"></div>
+        <p class="lantern-trigger-hint">Something magical is waiting for you...</p>
+        <button class="lantern-trigger-btn" id="lantern-trigger-btn">
+          <span class="btn-lantern-icon">&#x1FA94;</span>
+          <span class="btn-lantern-text">Release Your Lantern</span>
+          <span class="btn-sparkles">&#x2728;</span>
+        </button>
+        <p class="lantern-trigger-sub">Click to send a wish into the sky &#x1F319;</p>
+      </div>
+    </section>
+
+    <!-- ── Interactive Cake ── -->
+    <section class="cake-section">
+      <h2 class="cake-heading">Make a Wish! &#x1F56F;&#xFE0F;</h2>
+      <div class="cake" id="cake" title="Click to blow out the candles!">
+        <div class="candles">
+          <div class="candle"><div class="flame" id="f1"></div></div>
+          <div class="candle"><div class="flame" id="f2"></div></div>
+          <div class="candle"><div class="flame" id="f3"></div></div>
+        </div>
+        <div class="cake-body">
+          <div class="cake-tier tier1">
+            <span>&#x1F338;</span><span>&#x1F338;</span><span>&#x1F338;</span>
+          </div>
+          <div class="cake-tier tier2">
+            <span>&#x1F49C;</span><span>&#x1F49C;</span>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+      <p class="cake-hint" id="cake-hint">&#x1F446; Click the cake to blow out the candles!</p>
+      <p class="wish-granted hidden" id="wish-granted">&#x1F38A; Wish Granted! May all your dreams come true! &#x1F38A;</p>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+      <p>Made with &#x1F496; just for you, Ojeswi</p>
+      <p class="footer-sub">October 4th will always be a special day &#x1F338;</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
